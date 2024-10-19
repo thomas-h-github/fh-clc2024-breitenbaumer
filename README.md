@@ -56,31 +56,29 @@ Microsoft introduced the requirement to agree to their "Responsible AI" terms of
 3) execute `az login --use-device-code` and log in to your Azure Free Trial account
 You should see a similar output:
 ```
-[
-  {
-    "cloudName": "AzureCloud",
-    "homeTenantId": "f88d4b73-6bb2-4b9a-abc7-eb96e5a6407c",
-    "id": "fb0e8e47-e203-45b3-a725-3a365ce122ba",
-    "isDefault": true,
-    "managedByTenants": [],
-    "name": "Azure for Students",
-    "state": "Enabled",
-    "tenantId": "f88d4b73-6bb2-4b9a-abc7-eb96e5a6407c",
-    "user": {
-      "name": "p61219@fhooe.at",
-      "type": "user"
-    }
-  }
-]
+Retrieving tenants and subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name    Subscription ID                       Tenant
+-----  -------------------  ------------------------------------  --------
+[1] *  Azure for Students   fb0e8e47-e203-45b3-a725-3a365ce122ba  FH OOe
+
+The default is marked with an *; the default tenant is 'FH OOe' and subscription is 'Azure for Students' (fb0e8e47-e203-45b3-a725-3a365ce122ba).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
+Tenant: FH OOe
+Subscription: Azure for Students (fb0e8e47-e203-45b3-a725-3a365ce122ba)
 ```
-4) execute `az account set --subscription <id from above output>`
-5) execute `az deployment sub create --template-file main.bicep --location WestEurope`
+4) execute `az account set --subscription < Subscription ID from above output>`
+5) execute `az deployment sub create --template-file main.bicep --location EastUs`
    - The deployment will ask for the following values:
      - 'deploymentName': free choosable name for the deployment (e.g. `clc3-example`)
      - 'rgName': name of the resource group which should be created for the deployment(e.g. `rg-clc3-example-<lastname>`)
      
      **!!Important!!: use your last name as a prefix on the resource group name to avoid name colisions with other students**
-     - 'location': region where the infrastructure should be created (e.g. `westeurope`)
+     - 'location': region where the infrastructure should be created (e.g. `eastus`)
 6) **In case the deployment fails because it could not create the role-assignments, trigger the deployment a second time using the exact same values as before. This error is caused by Azure AD having a delay in the creation of new identities, while the template assumes that they are created immediately.**
 ---
 ## Function deployment

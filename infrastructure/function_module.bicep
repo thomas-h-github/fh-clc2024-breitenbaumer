@@ -126,7 +126,6 @@ resource sites_fh_clc3_example_name_web 'Microsoft.Web/sites/config@2022-03-01' 
     linuxFxVersion: 'JAVA|11'
     requestTracingEnabled: false
     remoteDebuggingEnabled: false
-    remoteDebuggingVersion: 'VS2019'
     httpLoggingEnabled: false
     acrUseManagedIdentityCreds: false
     logsDirectorySizeLimit: 35
@@ -234,6 +233,10 @@ resource sites_fh_clc3_example_name_web 'Microsoft.Web/sites/config@2022-03-01' 
       {
         name: 'CUSTOM_VISION_PREDICTION_KEY'
         value: customVisionService.listKeys().key1
+      }
+      {
+        name: 'COGNITIVE_SERVICE_ENDPOINT'
+        value: cogService.properties.endpoint
       }
     ]
   }

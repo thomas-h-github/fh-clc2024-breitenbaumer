@@ -4,34 +4,15 @@ param cosmosdb_name string
 resource databaseAccounts_resource 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
   name: cosmosdb_name
   location: location
-  tags: {
-    defaultExperience: 'Core (SQL)'
-    'hidden-cosmos-mmspecial': ''
-  }
   kind: 'GlobalDocumentDB'
   identity: {
     type: 'None'
   }
+  
   properties: {
-    publicNetworkAccess: 'Enabled'
-    enableAutomaticFailover: false
-    enableMultipleWriteLocations: false
-    isVirtualNetworkFilterEnabled: false
-    virtualNetworkRules: []
-    disableKeyBasedMetadataWriteAccess: false
     enableFreeTier: true
-    enableAnalyticalStorage: false
-    analyticalStorageConfiguration: {
-      schemaType: 'WellDefined'
-    }
-    databaseAccountOfferType: 'Standard'
-    defaultIdentity: 'FirstPartyIdentity'
-    networkAclBypass: 'None'
-    disableLocalAuth: false
     consistencyPolicy: {
-      defaultConsistencyLevel: 'Session'
-      maxIntervalInSeconds: 5
-      maxStalenessPrefix: 100
+      defaultConsistencyLevel: 'Eventual'
     }
     locations: [
       {
@@ -40,23 +21,7 @@ resource databaseAccounts_resource 'Microsoft.DocumentDB/databaseAccounts@2022-0
         isZoneRedundant: false
       }
     ]
-    cors: []
-    capabilities: []
-    backupPolicy: {
-      type: 'Periodic'
-      periodicModeProperties: {
-        backupIntervalInMinutes: 240
-        backupRetentionIntervalInHours: 8
-        backupStorageRedundancy: 'Local'
-      }
-    }
-    networkAclBypassResourceIds: []
-    diagnosticLogSettings: {
-      enableFullTextQuery: 'None'
-    }
-    capacity: {
-      totalThroughputLimit: 1000
-    }
+    databaseAccountOfferType: 'Standard'
   }
 }
 

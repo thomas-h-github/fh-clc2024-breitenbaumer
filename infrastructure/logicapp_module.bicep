@@ -240,12 +240,12 @@ resource workflows_fh_clc3_logicapp_name_resource 'Microsoft.Logic/workflows@201
                 type: 'ManagedServiceIdentity'
               }
             }
-            id: '${subscription().id}/providers/Microsoft.Web/locations/westeurope/managedApis/azureblob'
+            id: '${subscription().id}/providers/Microsoft.Web/locations/${location}/managedApis/azureblob'
           }
           cognitiveservicescomputervision_1: {
             connectionId: connections_cognitiveservicescomputervision_name_resource_id
             connectionName: 'cognitiveservicescomputervision-1'
-            id: '${subscription().id}/providers/Microsoft.Web/locations/westeurope/managedApis/cognitiveservicescomputervision'
+            id: '${subscription().id}/providers/Microsoft.Web/locations/${location}/managedApis/cognitiveservicescomputervision'
           }
           documentdb: {
             connectionId: connections_cosmosdb_name_resource_id
@@ -255,7 +255,7 @@ resource workflows_fh_clc3_logicapp_name_resource 'Microsoft.Logic/workflows@201
                 type: 'ManagedServiceIdentity'
               }
             }
-            id: '${subscription().id}/providers/Microsoft.Web/locations/westeurope/managedApis/documentdb'
+            id: '${subscription().id}/providers/Microsoft.Web/locations/${location}/managedApis/documentdb'
           }
         }
       }

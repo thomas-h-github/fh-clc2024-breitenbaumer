@@ -2,7 +2,7 @@ targetScope = 'resourceGroup'
 
 param connections_ascalert_name string = 'ascalert'
 param connections_azureblob_name string = 'azureblob'
-param location string = 'westeurope'
+param location string = 'eastus'
 
 var contentshare_name = 'functioncontentshare'
 var cosmosdb_name = 'fh-clc3-cosmosdb-${uniqueString(resourceGroup().id)}'
@@ -85,7 +85,7 @@ resource connections_ascalert_name_resource 'Microsoft.Web/connections@2016-06-0
       description: 'Microsoft Defender für Cloud ist ein einheitliches System zur Verwaltung der Infrastruktursicherheit, das die Sicherheit Ihrer Rechenzentren stärkt und einen erweiterten Schutz gegen Bedrohungen für Ihre hybriden Workloads in der Cloud (in Azure oder bei anderen Anbietern) und lokal bietet.'
       iconUri: 'https://connectoricons-prod.azureedge.net/releases/v1.0.1592/1.0.1592.2970/${connections_ascalert_name}/icon.png'
       brandColor: '#0072C6'
-      id: '${subscription().id}/providers/Microsoft.Web/locations/westeurope/managedApis/${connections_ascalert_name}'
+      id: '${subscription().id}/providers/Microsoft.Web/locations/${location}/managedApis/${connections_ascalert_name}'
       type: 'Microsoft.Web/locations/managedApis'
     }
     testLinks: []
@@ -111,7 +111,7 @@ resource connections_azureblob_name_resource 'Microsoft.Web/connections@2016-06-
       description: 'Microsoft Azure Storage bietet einen massiv skalierbaren, robusten und hoch verfügbaren Speicher für Daten in der Cloud und dient als Datenspeicherlösung für moderne Anwendungen. Stellen Sie eine Verbindung mit Blob Storage her, um für Blobs in Ihrem Azure Storage-Konto verschiedene Vorgänge durchzuführen wie beispielsweise Erstellen, Aktualisieren, Abrufen und Löschen.'
       iconUri: 'https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/${connections_azureblob_name}/icon.png'
       brandColor: '#804998'
-      id: '${subscription().id}/providers/Microsoft.Web/locations/westeurope/managedApis/${connections_azureblob_name}'
+      id: '${subscription().id}/providers/Microsoft.Web/locations/${location}/managedApis/${connections_azureblob_name}'
       type: 'Microsoft.Web/locations/managedApis'
     }
     testLinks: [

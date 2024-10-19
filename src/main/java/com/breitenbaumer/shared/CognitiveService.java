@@ -12,7 +12,7 @@ import com.azure.core.util.UrlBuilder;
 
 public class CognitiveService {
     private Logger logger;
-    private String endpoint = "westeurope.api.cognitive.microsoft.com";
+    private String endpoint = System.getenv("COGNITIVE_SERVICE_ENDPOINT");
     private String subscriptionKeyEnvVarName = "SUBSCRIPTIONKEY";
     private String endpointPath = "vision/v3.2/analyze";
 
@@ -22,6 +22,7 @@ public class CognitiveService {
 
     /**
      * Sends REST request to Computer vision endpoint and returns result
+     * 
      * @urlToImage publically reachable URL to the image that whould be analyzed
      * @return JSON string of the analysis result
      * @see https://docs.microsoft.com/en-us/rest/api/computervision/3.1/analyze-image/analyze-image?tabs=HTTP
