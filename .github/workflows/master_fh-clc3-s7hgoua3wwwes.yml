@@ -12,7 +12,6 @@ on:
 env:
   AZURE_FUNCTIONAPP_NAME: fh-clc3-s7hgoua3wwwes # set this to your function app name on Azure
   PACKAGE_DIRECTORY: '.' # set this to the directory which contains pom.xml file
-  JAVA_VERSION: '11' # set this to the java version to use
 
 jobs:
   build-and-deploy:
